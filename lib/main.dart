@@ -62,14 +62,17 @@ class _QuestionAppState extends State<QuestionApp> {
           appBar: AppBar(
             title: const Center(child: Text('Perguntas')),
           ),
-          body: Column(
-            children: hasSelectedQuestion
-                ? <Widget>[
-                    Question(_questions[_selectedQuestion]['text'].toString()),
-                    ...answersList
-                  ]
-                : [],
-          )),
+          body: hasSelectedQuestion
+              ? Column(children: <Widget>[
+                  Question(_questions[_selectedQuestion]['text'].toString()),
+                  ...answersList
+                ])
+              : const Center(
+                  child: Text(
+                    'Parabéns!',
+                    style: TextStyle(fontSize: 28),
+                  ),
+                )),
     );
   }
 }
