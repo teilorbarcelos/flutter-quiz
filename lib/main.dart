@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz/answer_option.dart';
 import 'package:flutter_quiz/question.dart';
+import 'package:flutter_quiz/result.dart';
 
 void main(List<String> args) => runApp(const QuestionApp());
 
@@ -67,12 +68,8 @@ class _QuestionAppState extends State<QuestionApp> {
                   Question(_questions[_selectedQuestion]['text'].toString()),
                   ...answersList
                 ])
-              : const Center(
-                  child: Text(
-                    'Parabéns!',
-                    style: TextStyle(fontSize: 28),
-                  ),
-                )),
+              : const Result(),
+      )
     );
   }
 }
