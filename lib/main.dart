@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_quiz/answer_option.dart';
-import 'package:flutter_quiz/question.dart';
+import 'package:flutter_quiz/questions_list.dart';
 import 'package:flutter_quiz/result.dart';
 
 void main(List<String> args) => runApp(const QuestionApp());
@@ -37,40 +36,33 @@ class _QuestionAppState extends State<QuestionApp> {
     }
   ];
 
+  bool get _hasSelectedQuestion {
+    return _selectedQuestion < _questions.length;
+  }
+
   void _answer() {
-    if (hasSelectedQuestion) {
+    if (_hasSelectedQuestion) {
       setState(() {
         _selectedQuestion++;
       });
     }
   }
 
-  bool get hasSelectedQuestion {
-    return _selectedQuestion < _questions.length;
-  }
-
   @override
   Widget build(BuildContext context) {
-    List<String> answers = hasSelectedQuestion
-        ? _questions[_selectedQuestion].cast()['answers']
-        : [];
-    List<Widget> answersList = answers
-        .map((textAnswer) => AnswerOption(text: textAnswer, onSelect: _answer))
-        .toList();
-
     return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: const Center(child: Text('Perguntas')),
-          ),
-          body: hasSelectedQuestion
-              ? Column(children: <Widget>[
-                  Question(_questions[_selectedQuestion]['text'].toString()),
-                  ...answersList
-                ])
-              : const Result(),
-      )
-    );
+        home: Scaffold(
+      appBar: AppBar(
+        title: const Center(child: Text('Perguntas')),
+      ),
+      body: _hasSelectedQuestion
+          ? QuestionsList(
+              questions: _questions,
+              selectedQuestion: _selectedQuestion,
+              hasSelectedQuestion: _hasSelectedQuestion,
+              onAnswer: _answer)
+          : const Result(),
+    ));
   }
 }
 
