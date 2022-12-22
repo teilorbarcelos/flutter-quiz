@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AnswerOption extends StatelessWidget {
-  final String text;
+  final String label;
   final void Function() onSelect;
 
-  const AnswerOption({super.key, required this.text, required this.onSelect});
+  const AnswerOption({super.key, required this.label, required this.onSelect});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class AnswerOption extends StatelessWidget {
           backgroundColor: Colors.blue
         ),
         onPressed: onSelect,
-        child: Text(text),
+        child: Text(label),
       ),
     );
   }

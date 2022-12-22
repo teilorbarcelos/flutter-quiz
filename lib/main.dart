@@ -10,28 +10,28 @@ class _QuestionAppState extends State<QuestionApp> {
     {
       'text': 'Qual o nome do "cachorro" do bob esponja?',
       'answers': [
-        'Pluto',
-        'Patriky',
-        'Garry',
-        'Plankton',
+        {'label': 'Pluto', 'value': 3},
+        {'label': 'Patriky', 'value': 7},
+        {'label': 'Garry', 'value': 10},
+        {'label': 'Plankton', 'value': 5},
       ]
     },
     {
       'text': 'Qual o nome do filho do darth vader?',
       'answers': [
-        'Lando',
-        'Luke',
-        'Gandalf',
-        'Chewbaka',
+        {'label': 'Lando', 'value': 7},
+        {'label': 'Luke', 'value': 10},
+        {'label': 'Gandalf', 'value': 3},
+        {'label': 'Chewbaka', 'value': 5},
       ]
     },
     {
       'text': 'Qual a cor do cavalo branco de Napoleão?',
       'answers': [
-        'marrom',
-        'branco',
-        'Preto',
-        'branca',
+        {'label': 'marrom', 'value': 3},
+        {'label': 'branco', 'value': 7},
+        {'label': 'Preto', 'value': 5},
+        {'label': 'branca', 'value': 10},
       ]
     }
   ];

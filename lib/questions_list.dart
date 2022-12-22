@@ -18,12 +18,12 @@ class QuestionsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-  List<String> answers = hasSelectedQuestion
+  List<Map<String, Object>> answers = hasSelectedQuestion
       ? questions[selectedQuestion].cast()['answers']
       : [];
 
   List<Widget> answersList = answers
-        .map((textAnswer) => AnswerOption(text: textAnswer, onSelect: onAnswer))
+        .map((textAnswer) => AnswerOption(label: textAnswer['label'] as String, onSelect: onAnswer))
         .toList();
 
     return Column(children: <Widget>[
