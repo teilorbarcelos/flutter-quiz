@@ -6,6 +6,7 @@ void main(List<String> args) => runApp(const QuestionApp());
 
 class _QuestionAppState extends State<QuestionApp> {
   var _selectedQuestion = 0;
+  var _score = 0;
   final List<Map<String, Object>> _questions = [
     {
       'text': 'Qual o nome do "cachorro" do bob esponja?',
@@ -36,14 +37,22 @@ class _QuestionAppState extends State<QuestionApp> {
     }
   ];
 
+  void _quizReset() {
+    setState(() {
+      _selectedQuestion = 0;
+      _score = 0;
+    });
+  }
+
   bool get _hasSelectedQuestion {
     return _selectedQuestion < _questions.length;
   }
 
-  void _answer() {
+  void _answer(int value) {
     if (_hasSelectedQuestion) {
       setState(() {
         _selectedQuestion++;
+        _score += value;
       });
     }
   }
@@ -61,7 +70,7 @@ class _QuestionAppState extends State<QuestionApp> {
               selectedQuestion: _selectedQuestion,
               hasSelectedQuestion: _hasSelectedQuestion,
               onAnswer: _answer)
-          : const Result(),
+          : Result(score: _score, onReset: _quizReset),
     ));
   }
 }

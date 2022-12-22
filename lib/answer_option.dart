@@ -12,9 +12,8 @@ class AnswerOption extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          textStyle: const TextStyle(color: Colors.white),
-          backgroundColor: Colors.blue
-        ),
+            textStyle: const TextStyle(color: Colors.white),
+            backgroundColor: Colors.blue),
         onPressed: onSelect,
         child: Text(label),
       ),

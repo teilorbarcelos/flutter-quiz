@@ -6,7 +6,7 @@ class QuestionsList extends StatelessWidget {
   final List<Map<String, Object>> questions;
   final int selectedQuestion;
   final bool hasSelectedQuestion;
-  final void Function() onAnswer;
+  final void Function(int) onAnswer;
 
   const QuestionsList(
       {required this.questions,
@@ -17,13 +17,14 @@ class QuestionsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Map<String, Object>> answers = hasSelectedQuestion
+        ? questions[selectedQuestion].cast()['answers']
+        : [];
 
-  List<Map<String, Object>> answers = hasSelectedQuestion
-      ? questions[selectedQuestion].cast()['answers']
-      : [];
-
-  List<Widget> answersList = answers
-        .map((textAnswer) => AnswerOption(label: textAnswer['label'] as String, onSelect: onAnswer))
+    List<Widget> answersList = answers
+        .map((textAnswer) => AnswerOption(
+            label: textAnswer['label'] as String,
+            onSelect: () => onAnswer(textAnswer['value'] as int)))
         .toList();
 
     return Column(children: <Widget>[
